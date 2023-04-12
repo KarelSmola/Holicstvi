@@ -1,0 +1,69 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem 1rem 1rem;
+  background-color: #555;
+}
+
+.logo-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #ddd;
+}
+
+.logo {
+  font-size: 5rem;
+  background-color: rgb(200, 142, 67);
+  padding: 0.5rem;
+  border: 2px solid #000;
+  border-radius: 50rem;
+}
+
+.logo-title {
+  text-decoration: underline;
+}
+
+.nav-list {
+  display: flex;
+  gap: 2rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #fff;
+  list-style-type: none;
+}
+
+.nav-item a:link,
+.nav-item a:visited {
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s;
+  padding: 1rem;
+  position: relative;
+}
+
+.nav-item a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  transform-origin: bottom right;
+  transition: transform 0.2s ease-out;
+}
+
+.nav-item a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.nav-item a:hover,
+.nav-item a:active {
+  cursor: pointer;
+}

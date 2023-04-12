@@ -1,0 +1,42 @@
+.pricelist {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  gap: 2rem;
+}
+
+.title {
+  grid-column: 1 / -1;
+  font-size: 5rem;
+}
+
+.service-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: grey;
+  width: 100%;
+}
+
+.service-title {
+  font-size: 3rem;
+}
+
+.service-text {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.service-time {
+  font-size: 1.6rem;
+}
+
+.service-price {
+  font-size: 2rem;
+  font-weight: 700;
+}

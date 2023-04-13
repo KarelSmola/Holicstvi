@@ -11,8 +11,8 @@ const Hero = () => {
         </h1>
         <p className={classes["hero-text"]}>
           Vasům se věnujeme od roku 1929. Naši historii začal psát náš děda
-          Otakar Střihač, který si otevřel své první pánské holičství v Praze na
-          Starém městě. My, jeho synové a vnuci v jeho odkazu pokračujeme a
+          Konrád Střihoruký, který si otevřel své první pánské holičství v Praze
+          na Starém městě. My, jeho synové a vnuci v jeho odkazu pokračujeme a
           dbáme na hodnoty, které náš děděček stanovil. Pečlivost, spolehlivost,
           spokojenost klientů.
         </p>

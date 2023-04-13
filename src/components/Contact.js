@@ -17,6 +17,18 @@ const Contact = () => {
           +420778553264
         </a>
       </div>
+      <div className={classes["opening-hours"]}>
+        <h2 className={classes["open-hours-title"]}>Otevírací doba</h2>
+        <ul className={classes["open-hours-list"]}>
+          <li>PO 9 - 19</li>
+          <li>ÚT 9 - 19</li>
+          <li>ST 9 - 19</li>
+          <li>ČT 9 - 19</li>
+          <li>PÁ 9 - 19</li>
+          <li>SO Zavřeno</li>
+          <li>NE Zavřeno</li>
+        </ul>
+      </div>
     </div>
   );
 };

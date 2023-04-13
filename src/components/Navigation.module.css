@@ -6,20 +6,11 @@
   background-color: #555;
 }
 
-.logo-box {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background-color: #ddd;
-}
+
 
 .logo {
   font-size: 5rem;
-  background-color: rgb(200, 142, 67);
-  padding: 0.5rem;
-  border: 2px solid #000;
-  border-radius: 50rem;
+ 
 }
 
 .logo-title {

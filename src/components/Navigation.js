@@ -6,10 +6,7 @@ import classes from "./Navigation.module.css";
 const Navigation = () => {
   return (
     <div className={classes.navigation}>
-      <div className={classes["logo-box"]}>
-        <Logo className={classes.logo} />
-        <h1 className={classes["logo-title"]}>Holičství</h1>
-      </div>
+      <Logo className={classes.logo} />
       <nav className={classes.nav}>
         <ul className={classes["nav-list"]}>
           <li className={classes["nav-item"]}>

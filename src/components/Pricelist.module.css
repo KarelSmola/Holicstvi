@@ -17,20 +17,22 @@
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
-  padding: 2rem;
-  background-color: grey;
+  padding: 2rem 4rem;
+  background-color: #aaa;
   width: 100%;
 }
 
 .service-title {
   font-size: 3rem;
+  font-weight: 500;
 }
 
 .service-text {
-  font-size: 1.6rem;
-  font-weight: 700;
+  font-size: 1.8rem;
+  font-weight: 300;
   text-align: center;
   line-height: 1.5;
+  height: 35%;
 }
 
 .service-time {

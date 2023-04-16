@@ -1,0 +1,31 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.label-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.label {
+  font-size: 1.6rem;
+}
+
+.input {
+  padding: 1rem;
+  border: 2px solid transparent;
+}
+
+.input:focus {
+  outline: none;
+  border-bottom: 2px solid #000;
+}
+
+.select {
+  padding: 1rem;
+  font-size: 1.6rem;
+}

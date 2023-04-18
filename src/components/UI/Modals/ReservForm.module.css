@@ -1,0 +1,71 @@
+.backdrop {
+  position: fixed;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.form {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 6rem;
+  background-color: #555;
+  z-index: 1;
+}
+
+.label-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.label {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.input {
+  padding: 1rem;
+  border: 2px solid transparent;
+}
+
+.input:focus {
+  outline: none;
+  border-bottom: 2px solid #000;
+}
+
+.select {
+  padding: 1rem;
+  font-size: 1.6rem;
+}
+
+.select option:focus {
+  border: none;
+}
+
+.order-btn-box {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.order-btn {
+  padding: 1rem 2rem;
+  border: 2px solid transparent;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.order-btn:hover {
+  cursor: pointer;
+  background-color: #000;
+  color: #fff;
+}

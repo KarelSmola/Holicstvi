@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import { createPortal } from "react-dom";
 
 import classes from "./ReservForm.module.css";
 
@@ -29,102 +30,108 @@ const Reservation = (props) => {
 
   return (
     <Fragment>
-      <div className={classes.backdrop} />
-      <form className={classes.form} onSubmit={submitHandler}>
-        <div className={classes["label-box"]}>
-          <label htmlFor="firstName" className={classes.label}>
-            Jméno
-          </label>
-          <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            value={enteredValue.firstName}
-            className={classes.input}
-            onChange={inputChangeHandler}
-          />
-        </div>
-        <div className={classes["label-box"]}>
-          <label htmlFor="lastName" className={classes.label}>
-            Příjmení
-          </label>
-          <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            value={enteredValue.lastName}
-            className={classes.input}
-            onChange={inputChangeHandler}
-          />
-        </div>
-        <div className={classes["label-box"]}>
-          <label htmlFor="email" className={classes.label}>
-            E-mail
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={enteredValue.email}
-            className={classes.input}
-            onChange={inputChangeHandler}
-          />
-        </div>
-        <div className={classes["label-box"]}>
-          <label htmlFor="phone" className={classes.label}>
-            Telefon
-          </label>
-          <input
-            type="phone"
-            id="phone"
-            name="phone"
-            value={enteredValue.phone}
-            className={classes.input}
-            onChange={inputChangeHandler}
-          />
-        </div>
-        <div className={classes["label-box"]}>
-          <label htmlFor="date" className={classes.label}>
-            Datum
-          </label>
-          <input
-            type="date"
-            id="date"
-            name="date"
-            value={enteredValue.date}
-            className={classes.input}
-            onChange={inputChangeHandler}
-          />
-        </div>
-        <div className={classes["label-box"]}>
-          <label htmlFor="barbers-select" className={classes.label}>
-            Holič
-          </label>
-          <select
-            name="barbers"
-            id="barbers-select"
-            value={enteredValue.barber}
-            className={classes.select}
-            onChange={inputChangeHandler}
-          >
-            <option value="random">Je mi to jedno</option>
-            <option value="Jaromir">Jaromír</option>
-            <option value="Karel">Karel</option>
-            <option value="Michal">Michal</option>
-          </select>
-        </div>
-        <div className={classes["order-btn-box"]}>
-          <button
-            className={classes["order-btn"]}
-            onClick={props.onCloseReservForm}
-          >
-            Cancel
-          </button>
-          <button className={classes["order-btn"]} type="submit">
-            Objednat
-          </button>
-        </div>
-      </form>
+      {createPortal(
+        <div className={classes.backdrop} />,
+        document.getElementById("backdrop")
+      )}
+      {createPortal(
+        <form className={classes.form} onSubmit={submitHandler}>
+          <div className={classes["label-box"]}>
+            <label htmlFor="firstName" className={classes.label}>
+              Jméno
+            </label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              value={enteredValue.firstName}
+              className={classes.input}
+              onChange={inputChangeHandler}
+            />
+          </div>
+          <div className={classes["label-box"]}>
+            <label htmlFor="lastName" className={classes.label}>
+              Příjmení
+            </label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              value={enteredValue.lastName}
+              className={classes.input}
+              onChange={inputChangeHandler}
+            />
+          </div>
+          <div className={classes["label-box"]}>
+            <label htmlFor="email" className={classes.label}>
+              E-mail
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={enteredValue.email}
+              className={classes.input}
+              onChange={inputChangeHandler}
+            />
+          </div>
+          <div className={classes["label-box"]}>
+            <label htmlFor="phone" className={classes.label}>
+              Telefon
+            </label>
+            <input
+              type="phone"
+              id="phone"
+              name="phone"
+              value={enteredValue.phone}
+              className={classes.input}
+              onChange={inputChangeHandler}
+            />
+          </div>
+          <div className={classes["label-box"]}>
+            <label htmlFor="date" className={classes.label}>
+              Datum
+            </label>
+            <input
+              type="date"
+              id="date"
+              name="date"
+              value={enteredValue.date}
+              className={classes.input}
+              onChange={inputChangeHandler}
+            />
+          </div>
+          <div className={classes["label-box"]}>
+            <label htmlFor="barbers-select" className={classes.label}>
+              Holič
+            </label>
+            <select
+              name="barbers"
+              id="barbers-select"
+              value={enteredValue.barber}
+              className={classes.select}
+              onChange={inputChangeHandler}
+            >
+              <option value="random">Je mi to jedno</option>
+              <option value="Jaromir">Jaromír</option>
+              <option value="Karel">Karel</option>
+              <option value="Michal">Michal</option>
+            </select>
+          </div>
+          <div className={classes["order-btn-box"]}>
+            <button
+              className={classes["order-btn"]}
+              onClick={props.onCloseReservForm}
+            >
+              Cancel
+            </button>
+            <button className={classes["order-btn"]} type="submit">
+              Objednat
+            </button>
+          </div>
+        </form>,
+        document.getElementById("modal")
+      )}
     </Fragment>
   );
 };

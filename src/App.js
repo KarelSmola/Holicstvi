@@ -20,7 +20,7 @@ const App = () => {
 
   return (
     <main>
-      <Navigation />
+      <Navigation order={showReservForm} />
       <Hero />
       <Gallery />
       <Pricelist />

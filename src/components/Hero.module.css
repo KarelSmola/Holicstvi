@@ -37,3 +37,14 @@
   color: #fff;
   text-align: center;
 }
+
+/* 960px = 90em */
+@media (max-width: 90em) {
+  .hero-title {
+    font-size: 4rem;
+  }
+
+  .hero-text {
+    font-size: 2.5rem;
+  }
+}

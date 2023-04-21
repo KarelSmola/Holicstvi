@@ -4,7 +4,7 @@ import classes from "./Pricelist.module.css";
 
 const Pricelist = () => {
   return (
-    <div className={classes.pricelist}>
+    <div className={classes.pricelist} id="price">
       <h1 className={classes.title}>Ceník</h1>
       <div className={classes["service-box"]}>
         <h2 className={classes["service-title"]}>Střih vlasů</h2>

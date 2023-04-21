@@ -4,7 +4,7 @@ import classes from "./Hero.module.css";
 
 const Hero = () => {
   return (
-    <div className={classes.hero}>
+    <div className={classes.hero} id="about">
       <div className={classes["hero-text-box"]}>
         <h1 className={classes["hero-title"]}>
           Vítejte na stránkách rodinného SK holičství

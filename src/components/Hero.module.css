@@ -48,3 +48,10 @@
     font-size: 2.5rem;
   }
 }
+
+/* 672px = 42em */
+@media (max-width: 42em) {
+  .hero {
+    padding-top: 3rem;
+  }
+}

@@ -32,7 +32,9 @@ const App = () => {
 
     setReservation(false);
   };
-  console.log(reservConfirm);
+
+  console.log(reservation);
+
   const mainClasses = reservation ? `${"main"} ${"no-events"}` : `${"main"}`;
 
   return (

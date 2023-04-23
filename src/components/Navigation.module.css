@@ -74,6 +74,9 @@
     position: absolute;
   }
 
+  .nav {
+  }
+
   .mobile-nav {
     display: flex;
     justify-content: center;

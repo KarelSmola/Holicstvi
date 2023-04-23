@@ -35,7 +35,7 @@ const Navigation = (props) => {
               <a href="#price">Ceník</a>
             </li>
             <li className={classes["nav-item"]} onClick={props.order}>
-              <a href="order">Objednat</a>
+              <a href="#contact">Objednat</a>
             </li>
             <li className={classes["nav-item"]} onClick={toggleMobileNav}>
               <a href="#contact">Kontakt</a>

@@ -24,7 +24,9 @@ const Reservation = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log(enteredValue);
+    const inputValues = enteredValue;
+
+    props.onCustomerValues(inputValues);
     setEnteredValue(initialState);
   };
 

@@ -10,11 +10,15 @@ html {
   scroll-behavior: smooth;
 }
 
-main {
+.main {
   max-width: 120rem;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 3rem;
   background-color: #ddd;
+}
+
+.no-events {
+  pointer-events: none;
 }

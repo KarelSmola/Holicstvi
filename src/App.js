@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 
 const App = () => {
   const [reservation, setReservation] = useState(false);
+
   const showReservForm = () => {
     setReservation(true);
   };
@@ -18,13 +19,24 @@ const App = () => {
     setReservation(false);
   };
 
+  const customerValues = (data) => {
+    console.log(data);
+  };
+
+  const mainClasses = reservation ? `${"main"} ${"no-events"}` : `${"main"}`;
+
   return (
-    <main>
+    <main className={mainClasses}>
       <Navigation order={showReservForm} />
       <Hero />
       <Gallery />
       <Pricelist />
-      {reservation && <ReservForm onCloseReservForm={closeReservForm} />}
+      {reservation && (
+        <ReservForm
+          onCloseReservForm={closeReservForm}
+          onCustomerValues={customerValues}
+        />
+      )}
       <ReservationButton onShowReservForm={showReservForm} />
       <Contact />
       <Footer />

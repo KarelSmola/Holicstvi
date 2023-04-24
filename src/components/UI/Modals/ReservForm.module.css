@@ -150,3 +150,10 @@
   background-color: #000;
   color: #fff;
 }
+
+/* 960px = 60em */
+@media (max-width: 60em) {
+  .form-box {
+    width: 60%;
+  }
+}

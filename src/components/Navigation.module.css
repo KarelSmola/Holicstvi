@@ -59,8 +59,8 @@
   display: none;
 }
 
-/* 960px = 90em */
-@media (max-width: 90em) {
+/* 960px = 60em */
+@media (max-width: 60em) {
   .nav-list {
     font-size: 2rem;
     gap: 0;

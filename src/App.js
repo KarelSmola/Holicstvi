@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Confirm from "./components/UI/Confirm";
+import { Transition } from "react-transition-group";
 import Navigation from "./components/Navigation";
 import Hero from "./components/Hero";
 import Gallery from "./components/Gallery";
@@ -28,28 +28,29 @@ const App = () => {
 
     setTimeout(() => {
       setReservConfirm(false);
-    }, 3000);
+    }, 1000);
 
     setReservation(false);
   };
-
-  console.log(reservation);
 
   const mainClasses = reservation ? `${"main"} ${"no-events"}` : `${"main"}`;
 
   return (
     <main className={mainClasses}>
-      {reservConfirm && <Confirm />}
       <Navigation order={showReservForm} />
       <Hero />
       <Gallery />
       <Pricelist />
-      {reservation && (
-        <ReservForm
-          onCloseReservForm={closeReservForm}
-          onCustomerValues={customerValues}
-        />
-      )}
+      <Transition in={reservation} timeout={1000} mountOnEnter unmountOnExit>
+        {(state) => (
+          <ReservForm
+            show={state}
+            confirm={reservConfirm}
+            onCloseReservForm={closeReservForm}
+            onCustomerValues={customerValues}
+          />
+        )}
+      </Transition>
       <ReservationButton onShowReservForm={showReservForm} />
       <Contact />
       <Footer />

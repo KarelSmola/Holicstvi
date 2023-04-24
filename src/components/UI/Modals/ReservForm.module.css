@@ -4,6 +4,7 @@
   height: 100vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
   z-index: 4;
   pointer-events: none;
 }
@@ -20,6 +21,40 @@
   padding: 2rem 6rem;
   background-color: #555;
   z-index: 5;
+  transition: all 1s ease-out;
+}
+
+.formOpen {
+  animation: openForm 1s ease-out forwards;
+}
+
+.formClose {
+  animation: closeForm 1s ease-out forwards;
+}
+
+@keyframes openForm {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -10%);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, 10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes closeForm {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 .label-box {
@@ -70,4 +105,66 @@
   cursor: pointer;
   background-color: #000;
   color: #fff;
+}
+
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 3;
+}
+
+.text-box {
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  width: 40%;
+  height: 40%;
+  z-index: 50;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  transition: all 1s ease-out;
+}
+
+.showTitle {
+  animation: titleShow 1s ease-out forwards;
+}
+
+.hideTitle {
+  animation: titleHide 1s ease-out forwards;
+}
+
+@keyframes titleShow {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes titleHide {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.reserv-title {
+  display: block;
+  font-size: 3rem;
 }

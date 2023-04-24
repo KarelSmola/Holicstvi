@@ -15,6 +15,10 @@
   font-weight: 500;
 }
 
+.service-text {
+  height: 7rem;
+}
+
 .service-btn {
   padding: 1rem 2rem;
   border: 2px solid transparent;
@@ -92,6 +96,7 @@
 
   .service-text {
     font-size: 1.6rem;
+    height: auto;
   }
 }
 

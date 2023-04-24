@@ -16,6 +16,10 @@ const initialState = {
 const Reservation = (props) => {
   const [enteredValue, setEnteredValue] = useState(initialState);
   const [confirmMessage, setConfirmedMessage] = useState(false);
+  const [isTouched, setIsTouched] = useState({
+    firstName: false,
+    lastName: false,
+  });
 
   const inputChangeHandler = (event) => {
     const name = event.target.name;
@@ -24,9 +28,23 @@ const Reservation = (props) => {
     setEnteredValue({ ...enteredValue, [name]: value });
   };
 
+  const inputBlurHandler = (event) => {
+    const name = event.target.name;
+    console.log(name);
+    setIsTouched({ ...isTouched, [name]: true });
+  };
+
+  const firstNameIsValid = enteredValue.firstName.trim().length > 0;
+  const firstNameIsInvalid = isTouched && !firstNameIsValid;
+
   const submitHandler = (event) => {
     event.preventDefault();
     const inputValues = enteredValue;
+
+    if (!firstNameIsValid) {
+      console.log("Invalid first name");
+      return;
+    }
 
     props.onCustomerValues(inputValues);
     setEnteredValue(initialState);
@@ -36,6 +54,10 @@ const Reservation = (props) => {
     enter: 1000,
     exit: 3000,
   };
+
+  const firstNameClasses = firstNameIsInvalid
+    ? `${classes.input} ${classes.invalid}`
+    : classes.input;
 
   return (
     <Fragment>
@@ -69,8 +91,9 @@ const Reservation = (props) => {
                   id="firstName"
                   name="firstName"
                   value={enteredValue.firstName}
-                  className={classes.input}
+                  className={firstNameClasses}
                   onChange={inputChangeHandler}
+                  onBlur={inputBlurHandler}
                 />
               </div>
               <div className={classes["label-box"]}>
@@ -126,12 +149,12 @@ const Reservation = (props) => {
                 />
               </div>
               <div className={classes["label-box"]}>
-                <label htmlFor="barbers-select" className={classes.label}>
+                <label htmlFor="barber-select" className={classes.label}>
                   Holič
                 </label>
                 <select
-                  name="barbers"
-                  id="barbers-select"
+                  name="barber"
+                  id="barber-select"
                   value={enteredValue.barber}
                   className={classes.select}
                   onChange={inputChangeHandler}

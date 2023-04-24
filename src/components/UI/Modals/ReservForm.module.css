@@ -72,6 +72,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  text-align: center;
   font-size: 2rem;
   padding: 1rem;
   color: #fff;
@@ -108,6 +109,11 @@
 .input:focus {
   outline: none;
   border-bottom: 2px solid #000;
+}
+
+.invalid {
+  border: 2px solid orangered;
+  background-color: pink;
 }
 
 .select {
@@ -154,6 +160,34 @@
 /* 960px = 60em */
 @media (max-width: 60em) {
   .form-box {
-    width: 60%;
+    width: 70%;
+  }
+}
+
+/* 600px = 37.5em */
+@media (max-width: 37.5em) {
+  .form-box {
+    top: 10%;
+    padding: 5rem 1rem 4rem 1rem;
+  }
+
+  .label-box {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 80%;
+  }
+
+  .label {
+    align-self: flex-start;
+    font-size: 1.8rem;
+  }
+
+  .input,
+  .select {
+    width: 100%;
+  }
+
+  .order-btn {
+    margin-top: 2rem;
   }
 }

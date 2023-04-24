@@ -1,0 +1,80 @@
+.service-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  padding: 2rem 4rem;
+  background-color: #aaa;
+  width: 100%;
+}
+
+.service-title {
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.more-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 12rem;
+}
+
+.service-text {
+  font-size: 1.8rem;
+  font-weight: 300;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.service-time {
+  font-size: 1.6rem;
+}
+
+.service-price {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* 1200px = 75em */
+@media (max-width: 75em) {
+  .more-box {
+    justify-content: center;
+    gap: 1rem;
+    height: auto;
+  }
+
+  .service-title {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  .service-text {
+    font-size: 1.5rem;
+  }
+}
+
+/* 960px = 90em */
+@media (max-width: 90em) {
+  .service-box {
+    width: 80%;
+  }
+
+  .service-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+
+  .service-text {
+    font-size: 1.6rem;
+  }
+}
+
+/* 600px = 37.5em */
+@media (max-width: 37.5em) {
+  .service-box {
+    width: 90%;
+  }
+}

@@ -19,7 +19,7 @@
 }
 
 .formBoxClose {
-  animation: closeFormBox 4s ease-out forwards;
+  animation: closeFormBox 3s ease-out forwards;
 }
 
 @keyframes openFormBox {
@@ -40,14 +40,22 @@
 @keyframes closeFormBox {
   0% {
     opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-50%, 0);
   }
 
   70% {
     opacity: 1;
+    transform: translate(-50%, 10%);
   }
 
   100% {
     opacity: 0;
+    transform: translate(-50%, -10%);
   }
 }
 

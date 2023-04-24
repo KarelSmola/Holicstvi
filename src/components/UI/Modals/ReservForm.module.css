@@ -1,38 +1,28 @@
-.backdrop {
+.form-box {
   position: fixed;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(3px);
-  z-index: 4;
-  pointer-events: none;
-}
-
-.form {
-  position: fixed;
-  top: 30%;
+  top: 20%;
   left: 50%;
   transform: translateX(-50%);
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  padding: 2rem 6rem;
+  padding: 5rem 4rem 4rem 4rem;
   background-color: #555;
   z-index: 5;
   transition: all 1s ease-out;
 }
 
-.formOpen {
-  animation: openForm 1s ease-out forwards;
+.formBoxOpen {
+  animation: openFormBox 1s ease-out forwards;
 }
 
-.formClose {
-  animation: closeForm 1s ease-out forwards;
+.formBoxClose {
+  animation: closeFormBox 4s ease-out forwards;
 }
 
-@keyframes openForm {
+@keyframes openFormBox {
   0% {
     opacity: 0;
     transform: translate(-50%, -10%);
@@ -47,8 +37,12 @@
   }
 }
 
-@keyframes closeForm {
+@keyframes closeFormBox {
   0% {
+    opacity: 1;
+  }
+
+  70% {
     opacity: 1;
   }
 
@@ -57,10 +51,38 @@
   }
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.confirm-order-message,
+.confirm-noOrder-message {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  padding: 1rem;
+  color: #fff;
+}
+
+.confirm-order-message {
+  background-color: green;
+}
+
+.confirm-noOrder-message {
+  background-color: orangered;
+}
+
 .label-box {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
+  width: 100%;
 }
 
 .label {
@@ -72,6 +94,7 @@
 .input {
   padding: 1rem;
   border: 2px solid transparent;
+  width: 70%;
 }
 
 .input:focus {
@@ -82,16 +105,11 @@
 .select {
   padding: 1rem;
   font-size: 1.6rem;
+  width: 70%;
 }
 
 .select option:focus {
   border: none;
-}
-
-.order-btn-box {
-  display: flex;
-  gap: 2rem;
-  padding: 1rem 0;
 }
 
 .order-btn {
@@ -101,72 +119,26 @@
   font-weight: 600;
 }
 
-.order-btn:hover {
+.cancel-btn {
+  padding: 1rem;
+  border: 2px solid transparent;
+  font-size: 2rem;
+  font-weight: 600;
+  position: absolute;
+  top: 0rem;
+  right: 0rem;
+  background-color: transparent;
+  color: #fff;
+}
+
+.cancel-btn:hover {
   cursor: pointer;
   background-color: #000;
   color: #fff;
 }
 
-/* .backdrop {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(2px);
-  z-index: 3;
-} */
-
-.confirm-message {
-  background-color: #ddd;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
-  width: 40%;
-  height: 40%;
-  z-index: 50;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 100;
-  transition: all 1s ease-out;
-}
-
-.showConfirmMessage {
-  animation: showConfirmMessage 1s ease-out forwards;
-}
-
-.hideConfirmMessage {
-  animation: hideConfirmMessage 1s ease-out forwards;
-}
-
-@keyframes showConfirmMessage {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes hideConfirmMessage {
-  0% {
-    opacity: 1;
-    transform: translate(0);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translate(-10%);
-  }
-}
-
-.reserv-title {
-  display: block;
-  font-size: 3rem;
+.order-btn:hover {
+  cursor: pointer;
+  background-color: #000;
+  color: #fff;
 }

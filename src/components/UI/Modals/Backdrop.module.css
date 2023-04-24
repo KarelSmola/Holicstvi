@@ -1,0 +1,39 @@
+.backdrop {
+  position: fixed;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
+  z-index: 4;
+  pointer-events: none;
+  transition: all 1s ease-out;
+}
+
+.showBackdrop {
+  animation: showBackdrop 1s ease-out;
+}
+
+.hideBackdrop {
+  animation: hideBackdrop 1s ease-out;
+}
+
+@keyframes showBackdrop {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes hideBackdrop {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

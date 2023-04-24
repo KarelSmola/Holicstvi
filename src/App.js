@@ -28,7 +28,7 @@ const App = () => {
 
     setTimeout(() => {
       setReservConfirm(false);
-    }, 1000);
+    }, 5000);
 
     setReservation(false);
   };

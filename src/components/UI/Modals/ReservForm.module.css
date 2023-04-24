@@ -107,7 +107,7 @@
   color: #fff;
 }
 
-.backdrop {
+/* .backdrop {
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -116,9 +116,9 @@
   background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(2px);
   z-index: 3;
-}
+} */
 
-.text-box {
+.confirm-message {
   background-color: #ddd;
   display: flex;
   justify-content: center;
@@ -136,15 +136,15 @@
   transition: all 1s ease-out;
 }
 
-.showTitle {
-  animation: titleShow 1s ease-out forwards;
+.showConfirmMessage {
+  animation: showConfirmMessage 1s ease-out forwards;
 }
 
-.hideTitle {
-  animation: titleHide 1s ease-out forwards;
+.hideConfirmMessage {
+  animation: hideConfirmMessage 1s ease-out forwards;
 }
 
-@keyframes titleShow {
+@keyframes showConfirmMessage {
   0% {
     opacity: 0;
   }
@@ -154,13 +154,15 @@
   }
 }
 
-@keyframes titleHide {
+@keyframes hideConfirmMessage {
   0% {
     opacity: 1;
+    transform: translate(0);
   }
 
   100% {
     opacity: 0;
+    transform: translate(-10%);
   }
 }
 

@@ -52,6 +52,22 @@
 /* 672px = 42em */
 @media (max-width: 42em) {
   .hero {
-    padding-top: 3rem;
+    padding-top: 6rem;
+  }
+}
+
+/* 600px = 37.5em */
+@media (max-width: 37.5em) {
+  .hero-text-box {
+    gap: 1rem;
+    padding: 2rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-text {
+    font-size: 1.6rem;
   }
 }

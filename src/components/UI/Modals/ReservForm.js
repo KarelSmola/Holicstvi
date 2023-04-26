@@ -4,7 +4,7 @@ import { createPortal } from "react-dom";
 
 import classes from "./ReservForm.module.css";
 
-const initialState = {
+const initialEnteredValues = {
   firstName: "",
   lastName: "",
   email: "",
@@ -13,13 +13,19 @@ const initialState = {
   barber: "",
 };
 
+const initialBlurValues = {
+  firstName: false,
+  lastName: false,
+  email: false,
+  phone: false,
+  date: false,
+  barber: false,
+};
+
 const Reservation = (props) => {
-  const [enteredValue, setEnteredValue] = useState(initialState);
+  const [enteredValue, setEnteredValue] = useState(initialEnteredValues);
   const [confirmMessage, setConfirmedMessage] = useState(false);
-  const [isTouched, setIsTouched] = useState({
-    firstName: false,
-    lastName: false,
-  });
+  const [isTouched, setIsTouched] = useState(initialBlurValues);
 
   const inputChangeHandler = (event) => {
     const name = event.target.name;
@@ -28,26 +34,48 @@ const Reservation = (props) => {
     setEnteredValue({ ...enteredValue, [name]: value });
   };
 
+  const { firstName, lastName, email, phone, date } = isTouched;
+
   const inputBlurHandler = (event) => {
     const name = event.target.name;
-    console.log(name);
+
     setIsTouched({ ...isTouched, [name]: true });
   };
 
   const firstNameIsValid = enteredValue.firstName.trim().length > 0;
-  const firstNameIsInvalid = isTouched && !firstNameIsValid;
+  const firstNameIsInvalid = firstName && !firstNameIsValid;
+
+  const lastNameIsValid = enteredValue.lastName.trim().length > 0;
+  const lastNameIsInvalid = lastName && !lastNameIsValid;
+
+  const emailIsValid = enteredValue.email.trim().includes("@");
+  const emailIsInvalid = email && !emailIsValid;
+
+  const checkIfNumber = !isNaN(enteredValue.phone);
+  const phoneIsValid = checkIfNumber && enteredValue.phone.trim().length > 0;
+  const phoneIsInvalid = phone && !phoneIsValid;
+
+  const dateIsValid = checkIfNumber && enteredValue.date.trim().length > 0;
+  const dateIsInvalid = date && !dateIsValid;
 
   const submitHandler = (event) => {
     event.preventDefault();
     const inputValues = enteredValue;
 
-    if (!firstNameIsValid) {
-      console.log("Invalid first name");
+    if (
+      !firstNameIsValid ||
+      !lastNameIsValid ||
+      !emailIsValid ||
+      !phoneIsValid ||
+      !dateIsValid
+    ) {
+      console.log("Invalid input");
       return;
     }
 
     props.onCustomerValues(inputValues);
-    setEnteredValue(initialState);
+    setEnteredValue(initialEnteredValues);
+    setIsTouched(initialBlurValues);
   };
 
   const animationTiming = {
@@ -55,9 +83,14 @@ const Reservation = (props) => {
     exit: 3000,
   };
 
-  const firstNameClasses = firstNameIsInvalid
-    ? `${classes.input} ${classes.invalid}`
-    : classes.input;
+  const inValidClass = `${classes.input} ${classes.invalid}`;
+  const validClass = `${classes.input}`;
+
+  const firstNameClasses = firstNameIsInvalid ? inValidClass : validClass;
+  const lastNameClasses = lastNameIsInvalid ? inValidClass : validClass;
+  const emailClasses = emailIsInvalid ? inValidClass : validClass;
+  const phoneClasses = phoneIsInvalid ? inValidClass : validClass;
+  const dateClasses = dateIsInvalid ? inValidClass : validClass;
 
   return (
     <Fragment>
@@ -105,8 +138,9 @@ const Reservation = (props) => {
                   id="lastName"
                   name="lastName"
                   value={enteredValue.lastName}
-                  className={classes.input}
+                  className={lastNameClasses}
                   onChange={inputChangeHandler}
+                  onBlur={inputBlurHandler}
                 />
               </div>
               <div className={classes["label-box"]}>
@@ -118,8 +152,9 @@ const Reservation = (props) => {
                   id="email"
                   name="email"
                   value={enteredValue.email}
-                  className={classes.input}
+                  className={emailClasses}
                   onChange={inputChangeHandler}
+                  onBlur={inputBlurHandler}
                 />
               </div>
               <div className={classes["label-box"]}>
@@ -131,8 +166,9 @@ const Reservation = (props) => {
                   id="phone"
                   name="phone"
                   value={enteredValue.phone}
-                  className={classes.input}
+                  className={phoneClasses}
                   onChange={inputChangeHandler}
+                  onBlur={inputBlurHandler}
                 />
               </div>
               <div className={classes["label-box"]}>
@@ -144,8 +180,9 @@ const Reservation = (props) => {
                   id="date"
                   name="date"
                   value={enteredValue.date}
-                  className={classes.input}
+                  className={dateClasses}
                   onChange={inputChangeHandler}
+                  onBlur={inputBlurHandler}
                 />
               </div>
               <div className={classes["label-box"]}>
@@ -158,6 +195,7 @@ const Reservation = (props) => {
                   value={enteredValue.barber}
                   className={classes.select}
                   onChange={inputChangeHandler}
+                  onBlur={inputBlurHandler}
                 >
                   <option value="random">Je mi to jedno</option>
                   <option value="Jaromir">Jaromír</option>

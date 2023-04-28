@@ -11,7 +11,6 @@ import Footer from "./components/Footer";
 
 const App = () => {
   const [reservation, setReservation] = useState(false);
-  // const [reservConfirm, setReservConfirm] = useState(false);
   const [validInput, setValidInput] = useState(false);
 
   const showReservForm = () => {
@@ -26,11 +25,6 @@ const App = () => {
   const customerValues = (data) => {
     console.log(data);
     setValidInput(true);
-    // setReservConfirm(true);
-
-    // setTimeout(() => {
-    //   setReservConfirm(false);
-    // }, 1000);
 
     setReservation(false);
   };

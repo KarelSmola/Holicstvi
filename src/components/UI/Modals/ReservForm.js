@@ -1,66 +1,76 @@
 import React, { Fragment, useState } from "react";
 import CSSTransition from "react-transition-group/CSSTransition";
 import { createPortal } from "react-dom";
+import useInput from "../../../hooks/useInput";
 
 import classes from "./ReservForm.module.css";
 
-const initialEnteredValues = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  phone: "",
-  date: "",
-  barber: "",
-};
-
-const initialBlurValues = {
-  firstName: false,
-  lastName: false,
-  email: false,
-  phone: false,
-  date: false,
-  barber: false,
-};
-
 const Reservation = (props) => {
-  const [enteredValue, setEnteredValue] = useState(initialEnteredValues);
   const [confirmMessage, setConfirmedMessage] = useState(false);
-  const [isTouched, setIsTouched] = useState(initialBlurValues);
+  const {
+    inputValue: firstNameValue,
+    inputIsValid: firstNameIsValid,
+    inputIsInvalid: firstNameIsInvalid,
+    inputChangeHandler: firstNameChangeHandler,
+    inputBlurHandler: firstNameBlurHandler,
+    inputTouched: firstNameTouched,
+    resetValues: resetFirstNameValues,
+  } = useInput((value) => value.trim() !== "");
 
-  const inputChangeHandler = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
+  const {
+    inputValue: lastNameValue,
+    inputIsValid: lastNameIsValid,
+    inputIsInvalid: lastNameIsInvalid,
+    inputChangeHandler: lastNameChangeHandler,
+    inputBlurHandler: lastNameBlurHandler,
+    inputTouched: lastNameTouched,
+    resetValues: resetLastNameValues,
+  } = useInput((value) => value.trim() !== "");
 
-    setEnteredValue({ ...enteredValue, [name]: value });
-  };
+  const {
+    inputValue: emailValue,
+    inputIsValid: emailIsValid,
+    inputIsInvalid: emailIsInvalid,
+    inputChangeHandler: emailChangeHandler,
+    inputBlurHandler: emailBlurHandler,
+    inputTouched: emailTouched,
+    resetValues: resetEmailValues,
+  } = useInput((value) => value.includes("@"));
 
-  const { firstName, lastName, email, phone, date } = isTouched;
+  const {
+    inputValue: phoneValue,
+    inputIsValid: phoneIsValid,
+    inputIsInvalid: phoneIsInvalid,
+    inputChangeHandler: phoneChangeHandler,
+    inputBlurHandler: phoneBlurHandler,
+    inputTouched: phoneTouched,
+    resetValues: resetPhoneValues,
+  } = useInput((value) => value.trim() !== "");
 
-  const inputBlurHandler = (event) => {
-    const name = event.target.name;
+  const {
+    inputValue: dateValue,
+    inputIsValid: dateIsValid,
+    inputIsInvalid: dateIsInvalid,
+    inputChangeHandler: dateChangeHandler,
+    inputBlurHandler: dateBlurHandler,
+    inputTouched: dateTouched,
+    resetValues: resetDateValues,
+  } = useInput((value) => value.trim() !== "");
 
-    setIsTouched({ ...isTouched, [name]: true });
-  };
-
-  const firstNameIsValid = enteredValue.firstName.trim().length > 0;
-  const firstNameIsInvalid = firstName && !firstNameIsValid;
-
-  const lastNameIsValid = enteredValue.lastName.trim().length > 0;
-  const lastNameIsInvalid = lastName && !lastNameIsValid;
-
-  const emailIsValid = enteredValue.email.trim().includes("@");
-  const emailIsInvalid = email && !emailIsValid;
-
-  const checkIfNumber = !isNaN(enteredValue.phone);
-  const phoneIsValid = checkIfNumber && enteredValue.phone.trim().length > 0;
-  const phoneIsInvalid = phone && !phoneIsValid;
-
-  const dateIsValid = checkIfNumber && enteredValue.date.trim().length > 0;
-  const dateIsInvalid = date && !dateIsValid;
+  const {
+    inputValue: barberValue,
+    inputChangeHandler: barberChangeHandler,
+    resetValues: resetBarberValues,
+  } = useInput(() => {});
 
   const submitHandler = (event) => {
     event.preventDefault();
-    const inputValues = enteredValue;
+
+    firstNameTouched();
+    lastNameTouched();
+    emailTouched();
+    phoneTouched();
+    dateTouched();
 
     if (
       !firstNameIsValid ||
@@ -73,9 +83,22 @@ const Reservation = (props) => {
       return;
     }
 
+    const inputValues = {
+      firstName: firstNameValue,
+      lastName: lastNameValue,
+      email: emailValue,
+      phone: phoneValue,
+      date: dateValue,
+      barber: barberValue,
+    };
+
     props.onCustomerValues(inputValues);
-    setEnteredValue(initialEnteredValues);
-    setIsTouched(initialBlurValues);
+    resetFirstNameValues();
+    resetLastNameValues();
+    resetEmailValues();
+    resetPhoneValues();
+    resetDateValues();
+    resetBarberValues();
   };
 
   const animationTiming = {
@@ -123,10 +146,10 @@ const Reservation = (props) => {
                   type="text"
                   id="firstName"
                   name="firstName"
-                  value={enteredValue.firstName}
+                  value={firstNameValue}
                   className={firstNameClasses}
-                  onChange={inputChangeHandler}
-                  onBlur={inputBlurHandler}
+                  onChange={firstNameChangeHandler}
+                  onBlur={firstNameBlurHandler}
                 />
               </div>
               <div className={classes["label-box"]}>
@@ -137,10 +160,10 @@ const Reservation = (props) => {
                   type="text"
                   id="lastName"
                   name="lastName"
-                  value={enteredValue.lastName}
+                  value={lastNameValue}
                   className={lastNameClasses}
-                  onChange={inputChangeHandler}
-                  onBlur={inputBlurHandler}
+                  onChange={lastNameChangeHandler}
+                  onBlur={lastNameBlurHandler}
                 />
               </div>
               <div className={classes["label-box"]}>
@@ -151,10 +174,10 @@ const Reservation = (props) => {
                   type="email"
                   id="email"
                   name="email"
-                  value={enteredValue.email}
+                  value={emailValue}
                   className={emailClasses}
-                  onChange={inputChangeHandler}
-                  onBlur={inputBlurHandler}
+                  onChange={emailChangeHandler}
+                  onBlur={emailBlurHandler}
                 />
               </div>
               <div className={classes["label-box"]}>
@@ -165,10 +188,10 @@ const Reservation = (props) => {
                   type="phone"
                   id="phone"
                   name="phone"
-                  value={enteredValue.phone}
+                  value={phoneValue}
                   className={phoneClasses}
-                  onChange={inputChangeHandler}
-                  onBlur={inputBlurHandler}
+                  onChange={phoneChangeHandler}
+                  onBlur={phoneBlurHandler}
                 />
               </div>
               <div className={classes["label-box"]}>
@@ -179,10 +202,10 @@ const Reservation = (props) => {
                   type="date"
                   id="date"
                   name="date"
-                  value={enteredValue.date}
+                  value={dateValue}
                   className={dateClasses}
-                  onChange={inputChangeHandler}
-                  onBlur={inputBlurHandler}
+                  onChange={dateChangeHandler}
+                  onBlur={dateBlurHandler}
                 />
               </div>
               <div className={classes["label-box"]}>
@@ -192,10 +215,9 @@ const Reservation = (props) => {
                 <select
                   name="barber"
                   id="barber-select"
-                  value={enteredValue.barber}
+                  value={barberValue}
                   className={classes.select}
-                  onChange={inputChangeHandler}
-                  onBlur={inputBlurHandler}
+                  onChange={barberChangeHandler}
                 >
                   <option value="random">Je mi to jedno</option>
                   <option value="Jaromir">Jaromír</option>
